@@ -239,6 +239,11 @@ class Transaction implements RedeSerializable, RedeUnserializable
     private $paymentFacilitatorID;
 
     /**
+     * @var Brand
+     */
+    private $brand;
+
+    /**
      * Transaction constructor.
      *
      * @param int $amount
@@ -492,6 +497,10 @@ class Transaction implements RedeSerializable, RedeUnserializable
 
             if ($property == 'requestDateTime' || $property == 'dateTime' || $property == 'refundDateTime') {
                 $value = new DateTime($value);
+            }
+
+            if ($property == 'Brand' && is_object($value)) {
+                $this->brand = Brand::create($value);
             }
 
             $this->$property = $value;
@@ -1106,6 +1115,24 @@ class Transaction implements RedeSerializable, RedeUnserializable
     public function setPaymentFacilitatorID($paymentFacilitatorID)
     {
         $this->paymentFacilitatorID = $paymentFacilitatorID;
+        return $this;
+    }
+
+    /**
+     * @return Brand
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    /**
+     * @param Brand $brand
+     * @return  Transaction
+     */
+    public function setBrand($brand)
+    {
+        $this->brand = $brand;
         return $this;
     }
 

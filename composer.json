@@ -1,6 +1,6 @@
 {
-  "name": "developersrede/erede-php",
-  "version": "4.2.1",
+  "name": "zedomel/erede-php",
+  "version": "4.2.2",
   "description": "e.Rede integration SDK",
   "minimum-stability": "stable",
   "license": "MIT",
@@ -21,7 +21,7 @@
   },
   "authors": [
     {
-      "name": "João Batista Neto",
+      "name": "Jose Batista Neto",
       "email": "neto.joaobatista@gmail.com"
     }
   ]

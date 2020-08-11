@@ -147,6 +147,10 @@ abstract class AbstractService
             $headers[] = 'Content-Length: 0';
         }
 
+        if ($this->getService() === 'transactions') {
+            $headers[] = 'Transaction-Response: brand-return-opened';
+        }
+
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($this->curl, CURLOPT_HTTPHEADER, $headers);
 
