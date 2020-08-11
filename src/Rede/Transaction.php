@@ -499,7 +499,7 @@ class Transaction implements RedeSerializable, RedeUnserializable
                 $value = new DateTime($value);
             }
 
-            if ($property == 'Brand' && is_object($value)) {
+            if ($property == 'brand' && is_object($value)) {
                 $this->brand = Brand::create($value);
             }
 
