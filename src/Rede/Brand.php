@@ -5,8 +5,9 @@ namespace Rede;
 /**
  * Brand
  */
-class Brand
+class Brand implements RedeSerializable
 {
+    use SerializeTrait;
     use CreateTrait;
 
     /**

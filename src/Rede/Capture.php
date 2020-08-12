@@ -4,8 +4,9 @@ namespace Rede;
 
 use DateTime;
 
-class Capture
+class Capture implements RedeSerializable
 {
+    use SerializeTrait;
     use CreateTrait;
 
     /**

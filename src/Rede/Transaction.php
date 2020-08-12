@@ -10,6 +10,8 @@ use InvalidArgumentException;
 
 class Transaction implements RedeSerializable, RedeUnserializable
 {
+    use SerializeTrait;
+
     const CREDIT = 'credit';
     const DEBIT = 'debit';
 
@@ -382,47 +384,6 @@ class Transaction implements RedeSerializable, RedeUnserializable
 
         $this->capture = $capture;
         return $this;
-    }
-
-    /**
-     * @return array
-     * @see    \JsonSerializable::jsonSerialize()
-     */
-    public function jsonSerialize()
-    {
-        $capture = null;
-
-        if (is_bool($this->capture)) {
-            $capture = $this->capture ? 'true' : 'false';
-        }
-
-        return array_filter(
-            [
-                'capture' => $capture,
-                'antifraudRequired' => $this->antifraudRequired,
-                'cart' => $this->cart,
-                'kind' => $this->kind,
-                'threeDSecure' => $this->threeDSecure,
-                'reference' => $this->reference,
-                'amount' => $this->amount,
-                'installments' => $this->installments,
-                'cardHolderName' => $this->cardHolderName,
-                'cardNumber' => $this->cardNumber,
-                'expirationMonth' => $this->expirationMonth,
-                'expirationYear' => $this->expirationYear,
-                'securityCode' => $this->securityCode,
-                'softDescriptor' => $this->softDescriptor,
-                'subscription' => $this->subscription,
-                'origin' => $this->origin,
-                'distributorAffiliation' => $this->distributorAffiliation,
-                'storageCard' => $this->storageCard,
-                'urls' => $this->urls,
-                'iata' => $this->iata,
-                'additional' => $this->additional
-            ], function ($value) {
-            return !is_null($value);
-        }
-        );
     }
 
     /**

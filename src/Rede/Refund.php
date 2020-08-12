@@ -4,8 +4,9 @@ namespace Rede;
 
 use DateTime;
 
-class Refund
+class Refund implements RedeSerializable
 {
+    use SerializeTrait;
     use CreateTrait;
 
     /**

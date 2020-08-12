@@ -4,8 +4,9 @@ namespace Rede;
 
 use DateTime;
 
-class Authorization
+class Authorization implements RedeSerializable
 {
+    use SerializeTrait;
     use CreateTrait;
 
     /**
